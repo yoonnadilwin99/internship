@@ -118,47 +118,30 @@
         </div>
         <script>
             let display = document.getElementById("display");
-            function addBracket(){
-                let start=display.selectionStart;
-                let end=display.seletionEnd;
-                let text=display.value;
-                display.value=text.substring(0, start)+"()"+text.substring(end);
-                display.focus();
-                display.setSelectionRange(start + 1, start +1 );
-            }
-
             function appendValue(value) {
+            let start = display.selectionStart;
+            let end = display.selectionEnd;
+            let text = display.value;
 
-                if (display.value == "0") {
-                    display.value = value;
-                }
-                else {
-                    display.value += value;
-                }
-            }
+            if (text === "0") {
+            display.value = value;
+            display.setSelectionRange(1, 1);
+        } else {
+            display.value = text.substring(0, start) + value + text.substring(end);
+            display.focus();
+            display.setSelectionRange(start + value.length, start + value.length);
+        }
+}
 
-            function clearDisplay() {
-                display.value = "0";
-            }
+            function addBracket() {
+            let start = display.selectionStart;
+            let end = display.selectionEnd; 
+            let text = display.value;
 
-            function deleteOne() {
-                display.value = display.value.slice(0, -1);
-                if (display.value === "") {
-                    display.value = "0";
-                }
-            }
-            function calculate() {
-                try {
-                    let exp = display.value;
-                    if (exp.includes("%") && !exp.match(/\d+%\d/)) {
-                        exp = exp.replace("%", "/100");
-                    }
-                    display.value = eval(exp);
-                }
-                catch {
-                    display.value = "Error";
-                }
-            }
+            display.value = text.substring(0, start) + "()" + text.substring(end);
+            display.focus();
+            display.setSelectionRange(start + 1, start + 1)
+            
         </script>
     </body>
 
