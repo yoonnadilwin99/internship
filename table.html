@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+table,th,td{
+        border:2px dashed rgb(145, 178, 98);
+         border-collapse:collapse;
+    }  
+ 
+.no{
+    text-align: center;
+    text-decoration-color: aqua;
+}
+.name{
+    text-align: left;
+}
+.gender{
+    text-align: center;
+}
+.rono{
+    text-align: left;
+}
+.mark{
+    text-align: right;
+}
+/* table
+{
+    border:1px solid green;
+} */
+</style>
+</head>
+<body>
+    
+    <table style="width:50%">
+        <tr>
+
+            <th rowspan="2">No</th>
+            <th rowspan="2">Student Name</th>
+            <th rowspan="2">Gender</th>
+            <th rowspan="2">Roll No.</th>
+            <th colspan="3">Marks</th>
+        </tr>
+        <tr>
+            <th>Myanmar</th>
+            <th>English</th>
+            <th>Maths</th>
+        </tr>
+        <tr>
+            <td class="no">1</td>
+            <td class="name">Su Su</td>
+            <td rowspan="2" class="gender">Female</td>
+            <td class="rono">5CS-32</td>
+            <td class="mark">60</td>
+            <td class="mark">75</td>
+            <td class="mark">86</td>
+        </tr>
+        <tr>
+            <td class="no">2</td>
+            <td class="name">Moe Moe</td>
+           <td class="rono"> 5CS-33</td>
+           <td class="mark">78</td>
+           <td class="mark">86</td>
+           <td class="mark">84</td>
+        </tr>
+        <tr>
+            <td class="no">3</td>
+            <td class="name">Kyaw Kyaw</td>
+            <td rowspan="3" class="gender">Male</td>
+            <td class="rono"> 5CS-34</td>
+            <td class="mark">89</td>
+            <td class="mark">43</td>
+            <td class="mark">86</td>
+        </tr>
+        <tr>
+            <td class="no">4</td>
+            <td class="name">Mg Mg</td>
+            <td class="rono">5CS-35</td>
+            <td class="mark">76</td>
+            <td class="mark">75</td>
+            <td class="mark">75</td>
+        </tr>
+        <tr>
+            <td class="no">5</td>
+            <td class="name">Aung Aung</td>
+          <td class="rono"> 5CS-36</td>
+          <td class="mark">87</td>
+          <td class="mark">75</td>
+          <td class="mark">86</td>
+        </tr>
+        
+    </table>
+    
+</body>
+</html>

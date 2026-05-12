@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .updateVariable {
+
+            margin: 10px;
+            padding: 10px 15px;
+
+
+        }
+
+        .nameString {
+            border: 1px solid black;
+            display: flex;
+            border-radius: 10px;
+            width: 500px;
+            height: 350px;
+            margin: auto;
+
+
+        }
+
+        .vipMember {
+            border: 1px solid black;
+            padding: 10px 15px;
+            margin: 10px;
+            border-radius: 10px;
+        }
+
+        .color {
+            background-color: yellow;
+            color: black;
+            border: 0.5px solid black;
+            border-radius: 10px;
+        }
+
+        .liveOutput {
+            margin: 10px;
+
+        }
+
+        .Content {
+            display: flex;
+            gap: 30px;
+
+        }
+
+        .left,.right {
+            flex: 1;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="Content">
+        <div class="left">
+            <h1>Update Variables</h1>
+            <div><label>Name(String):</label>
+            <h2> <input type="text"></h2>
+        </div>
+    <div>
+        <label>Age (Number):</label>
+        <h2><input type="text"></h2>
+    </div>
+    <div>
+        <label>VIP Status (Boolean):</label>
+        <h2><input type="checkbox"></h2>
+    </div>
+    <div>
+        <label>Card Color:</label>
+        <h1> <input type="color" id="Card Color" name="cardcolor"></h1>
+    </div>
+    </div>
+    <div class="right">
+        <div class="liveOutput">
+            <h1>Live DOM Output</h1>
+            <div class="vipMember">
+                <label class="color" for="">VIP MEMBER</label><br />
+                <p>Alex Walker</p>
+                <p>Age:32</p>
+            </div>
+        </div>
+
+
+    </div>
+    
+</body>
+
+</html>

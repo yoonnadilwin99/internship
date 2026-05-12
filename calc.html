@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini Calculator</title>
+    <style>
+        *{
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+
+        /* body{
+            background-color: palevioletred;
+        } */
+        .calculator{
+            row-gap:20px;
+             border:1px solid black; 
+            text-align: center;
+            width:400px;
+            height:250px;
+            /* margin:50px; */
+            /* padding:30px; */
+            /* background-color: yellow; */
+            margin:auto;
+            display:flex;
+            flex-direction:column;
+            /* justify-content: center; */
+            align-items:center;
+            margin-top:200px;
+            background-color: white;
+            border-radius:8px;
+        }
+        .mini{
+            display:flex;
+
+            margin-top:20px;
+            /* margin-bottom:10px; */
+            /* flex-direction:column;
+            justify-content: center;
+            align-items:center; */
+            /* gap:5px; */
+            /* background-color: yellow; */
+        }
+        .main{
+            /* margin-top:20px; */
+            /* display:flex;
+            /* flex:3; */
+            /* gap:30px;
+            width:50px;
+            height:30px;
+            margin-bottom: 30px; */ 
+            /* width:50px;
+            height:30px; */
+            /* border-radius:50px; */
+            /* background-color: green; */
+            height:30px;
+            display:flex;
+            column-gap:20px;
+        }
+
+        .user-input{
+            width:100px;
+            height:30px;
+            border-radius:5px;
+            border:1px solid black;
+            
+        }
+
+        select{
+            width:50px;
+        }
+        .amount{
+            background-color: blue;
+            /* color:white; */
+            width:300px;
+            height:30px;
+            border-radius: 8px;
+            text-align: center;
+            align-items: center;
+            cursor:pointer;
+            font-weight:bold;
+            margin-bottom:10px;
+            padding-top:15px;
+            padding-bottom: 30px;
+            justify-content: center;
+
+        }
+
+        .btn{
+            text-align: center;
+            align-items: center;
+            justify-content: center;
+            background-color: blue;
+            border:none;
+            color:white;
+            font-size:bold;
+        }
+        .result{
+            padding-top:10px;
+            width:300px;
+            border:1px solid gray;
+            display:flex;
+            background-color:rgb(236, 228, 228);
+            align-items:center;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            padding-left:20px;
+            padding-right:15px;
+            padding-bottom: 5px;
+            
+        }
+        .result span{
+            color:green;
+            font-size:20px;
+            font-weight:bold;
+            padding-bottom: 5px;
+            padding-left:20px;
+            padding-right:15px;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="mini">
+            <h3>Mini Calculator</h3>
+        </div>
+        <div class="main">
+            <input type="number" class="user-input" id="num1">
+
+            <select id="operator">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+            </select>
+
+            <input type="number" class="user-input" id="num2">
+        </div>
+        <div class="amount">
+            <button onclick="calculate()" class="btn">
+            Calculate Amount
+            </button>
+        </div>
+        <div class="result">
+            <h4>Result:</h4>
+            <span id="result">0</span>
+        </div>
+        <script>
+            function calculate(){
+                const num1=parseFloat(document.getElementById("num1").value);
+                const num2=parseFloat(document.getElementById("num2").value);
+                const operator=document.getElementById("operator").value;
+                const resultEl = document.getElementById("result");
+
+                if (isNaN(num1) || isNaN(num2)) {
+                resultEl.textContent = "Enter a number";
+                return;
+                }
+                
+            // if (num1 === ""  num2 === "") {
+            //         resultEl.textContent = "Enter a number";
+            //         return; 
+            //     }
+
+                 let result;
+            switch(operator){
+                case"+":
+                result=num1+num2;
+                break;
+
+                case"-":
+                result=num1-num2;
+                break;
+
+                case"*":
+                result=num1*num2;
+                break;
+
+                case "/":
+                result = num2 !== 0 ? num1 / num2 : "Can't divide by zero";
+                break;
+
+                default:
+                result = "Error";
+
+                
+            }
+            resultEl.textContent=result;
+                
+            }
+        
+        </script>
+
+
+    </div>
+</body>
+</html>

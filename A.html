@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: auto;
+        background-color: gray;
+      }
+      .content {
+        margin: auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        column-gap: 5rem;
+        background-color: rgb(134, 13, 13);
+        width: 600px;
+        margin-top: 100px;
+        border-radius: 0.5rem;
+        padding: 0px 20px;
+      }
+      .user-input {
+        width: 200px;
+      }
+
+      .color {
+        height: 20px;
+        border: 1px solid black;
+        padding: 10px 10px;
+        border-radius: 0.3rem;
+      }
+
+      .box {
+        border: 2px solid black;
+        padding: 5px 5px;
+        border-radius: 0.5rem;
+        padding: 10px 10px;
+      }
+      .vip {
+        background-color: yellow;
+        border-radius: 1rem;
+        padding: 5px 5px;
+        font-size: 1rem;
+        display: none;
+      }
+
+      .box h2 {
+        row-gap: 0.5rem;
+      }
+
+      .check {
+        margin-left: 9rem;
+      }
+      .controls{
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="content">
+      <div class="controls">
+        <h2>Update Variables</h2>
+        <label>Name (String):</label>
+        <input type="text" class="user-input" id="nameInput" />
+
+        <label>Age (Number):</label>
+        <input type="number" class="user-input" id="ageInput" />
+
+        <label>VIP Status(Boolean):</label>
+        <input type="checkbox" class="check" id="vipInput" />
+
+        <label>Card Color:</label>
+        <input type="color" class="color" id="colorInput" />
+      </div>
+      <div>
+        <h2>Live DOM Output</h2>
+        <div class="box">
+          <span id="vipBadge" class="vip">VIP MEMBER</span>
+          <h3 id="nameOutput"></h3>
+          <p>Age:<span id="ageOutput"></span></p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    const nameInput = document.getElementById("nameInput");
+    const ageInput = document.getElementById("ageInput");
+    const vipInput = document.getElementById("vipInput");
+    const colorInput = document.getElementById("colorInput");
+
+    const nameOutput = document.getElementById("nameOutput");
+    const ageOutput = document.getElementById("ageOutput");
+    const vipBadge = document.getElementById("vipBadge");
+    const box = document.querySelector(".box");
+
+    // Name update
+    nameInput.addEventListener("input", () => {
+      nameOutput.textContent = nameInput.value ;
+    });
+
+    // Age update
+    ageInput.addEventListener("input", () => {
+      ageOutput.textContent = ageInput.value ;
+    });
+
+    // VIP checkbox
+    vipInput.addEventListener("change", () => {
+      if (vipInput.checked) {
+        vipBadge.style.display = "inline-block";
+      } else {
+        vipBadge.style.display = "none";
+      }
+    });
+
+    // Color change
+    colorInput.addEventListener("input", () => {
+      box.style.backgroundColor = colorInput.value;
+    });
+  </script>
+  
+</html>

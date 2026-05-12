@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    /* *{
+        padding:0;
+        margin:0;
+        box-sizing: border-box;
+    } */
+     body{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+     }
+     .Calc{
+        border: 1px solid black;
+        width: 300px;
+        height: 500px;
+        /* /* text-align: center;
+        justify-content: center;
+        align-items: center; */
+        margin-left: 50px;
+        margin-top: 100px; */
+     }
+
+    .button{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        gap:10px;
+        /* /* border: none;
+        border-radius: 50px;
+        width:50px;
+        height:70px;
+        text-align: center; */
+        align-items: center;
+        padding-top: 120px;
+        padding-left: 15px;
+        
+    }
+    button{
+        border: none;
+        border-radius: 50px;
+        width: 50px;
+        height:50px;
+        background-color: rgb(79, 89, 131);
+        font-size: 20px;
+    }
+    .display{
+        border: none;
+        font-size: 30px;
+        width: 100%;
+        outline: none;
+        padding: 20px;
+        box-sizing: border-box;
+        background-color: transparent;
+        text-align: right;
+        color: blue;
+
+    }
+    .operator{
+        color: purple;
+    }
+    .equal{
+        background-color: palevioletred;
+        color: white;
+    }
+  </style>
+  <body>
+    <div class="Calc">
+      <input type="text" id="display" class="display" value="0" />
+      <div class="button">
+        <button class="operator" onclick="clearDisplay()">C</button>
+        <button class="operator" onclick="deleteOne()">⌫</button>
+        <button class="operator" onclick="appendValue('%')">%</button>
+        <button class="operator" onclick="appendValue('÷')">÷</button>
+        <button onclick="appendValue('7')">7</button>
+        <button onclick="appendValue('8')">8</button>
+        <button onclick="appendValue('9')">9</button>
+        <button class="operator" onclick="appendValue('*')">×</button>
+        <button onclick="appendValue('4')">4</button>
+        <button onclick="appendValue('5')">5</button>
+        <button onclick="appendValue('6')">6</button>
+        <button class="operator" onclick="appendValue('-')">-</button>
+        <button onclick="appendValue('1')">1</button>
+        <button onclick="appendValue('2')">2</button>
+        <button onclick="appendValue('3')">3</button>
+        <button class="operator" onclick="appendValue('+')">+</button>
+        <button onclick="appendValue('()')">()</button>
+        <button onclick="appendValue('0')">0</button>
+        <button onclick="appendValue('.')">.</button>
+        <button onclick="calculate()" class="equal">=</button>
+      </div>
+    </div>
+    <script>
+              let display = document.getElementById("display");
+            function appendValue(value){
+
+          if(display.value == "0"){
+              display.value = value;
+          }
+          else{
+          display.value += value;
+      }
+          }
+
+      function clearDisplay(){
+          display.value = "0";
+      }
+
+      function deleteOne(){
+          display.value = display.value.slice(0,-1);
+          if(display.value === ""){
+              display.value = "0";
+          }
+      }
+      function calculate(){
+            try{
+                let exp=display.value;
+                if(exp.includes("%")&& !exp.match(/\d+%\d/)){
+                    exp=exp.replace("%","/100");
+                }
+                display.value=eval(exp);
+            }
+            catch{
+                display.value="Error";
+            }
+        }
+    </script>
+  </body>
+</html>
