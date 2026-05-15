@@ -25,6 +25,7 @@
         background: white;
         padding: 20px;
         border-radius: 20px;
+        position:relative;
       }
 
       #display {
@@ -46,12 +47,13 @@
         transform: scale(0.95);
       }
       button {
-        height: 55px;
+        height: 52px;
         border: none;
         border-radius: 50%;
         font-size: 22px;
         cursor: pointer;
-        background-color: rgb(191, 182, 198);
+        background-color: rgb(217, 187, 240);
+        
       }
 
       .equal {
@@ -67,6 +69,18 @@
       .display {
         color: blue;
       }
+      .home-indicator {
+            display: flex;
+            width: 80px;
+            height: 2px;
+            background-color: blue;
+            margin: 10px auto;
+            border: none;
+            border-radius: 10px;
+            position: absolute;
+            margin-left: 75px;
+
+        }
     </style>
   </head>
 
@@ -100,6 +114,7 @@
         <button class="blue">.</button>
         <button class="equal">=</button>
       </div>
+      <div class="home-indicator"></div>
     </div>
 
     <script>
@@ -199,7 +214,10 @@
                   .replace(/(\d)\(/g, "$1*(");
                 let result = eval(expr);
 
-                display.value = isFinite(result) ? result : "Error";
+                display.value = isFinite(result) ? result : "Cannot divide by zero";
+                display.focus();
+                let len=display.value.length;
+                display.setSelectionRange(len,len);
               } catch {
                 display.value = "Error";
               }

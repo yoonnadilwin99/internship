@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="px-40 py-10 h-screen mx-auto">
+    <div class="flex flex-col">
+        <h1 class="font-bold text-xl ">Tailwind Utility Simulator</h1>
+        <p>Change the inputs below to see how automatic classes combine to build Uls</p>
+    </div>
+    <!-- <nav class=" bg-black flex justify-between mt-10">
+        <div class=" text-white">MyLogo</div>
+        <div class=" flex flex-row gap-3">
+            <a href class="text-white">Home</a>
+            <a href class="text-white">About</a>
+            <a href class="text-white">Contact</a>
+
+        </div>
+    </nav> -->
+    <nav class="bg-blue-900 text-white px-6 py-4 flex items-center justify-between mt-5">
+
+  <!-- Logo -->
+    <div class="text-xl font-bold">MyLogo</div>
+
+    <div class="hidden md:flex gap-6">
+    <a href="#" class="text-white no-underline">Home</a>
+    <a href="#" class="text-white no-underline">About</a>
+    <a href="#" class="text-white no-underline">Contact</a>
+    </div>
+
+    <button id="menuBtn" class="md:hidden text-2xl">
+    ☰
+    </button>
+</nav>
+    <div class="grid md:grid-cols-3 gap-4 mt-2 p-4 text-center">
+        <div class="rounded-lg bg-blue-300 text-black hover:bg-blue-600 p-3">
+            <button class="">Feature 1</button>
+        </div>
+        <div class="rounded-lg bg-blue-300 text-black hover:bg-blue-600 p-3">
+            <button>Feature 2</button>
+        </div>
+        <div class="rounded-lg bg-blue-300 text-black hover:bg-blue-600 p-3">
+            <button>Feature 3</button>
+        </div>
+    </div>
+    <div class="grid grid-cols-2 items-stretch flex-flex-wrap">
+        <div class="flex flex-col gap-4 border-2 rounded-lg p-4 mx-4">
+            <h2 class="font-bold text-black">Utility Controls</h2>
+            <div class="flex flex-col gap-3">
+                <label>Padding (Spacing)</label>
+                <select class="text-normal border-2 w-full h-8 rounded-lg">
+                    <option>Medium (p-8)</option>
+                </select>
+
+                <label>Background Theme(Colors)</label>
+                <select class="text-normal border-2 w-full h-8 rounded-lg">
+                    <option>Primary Blue</option>
+                </select>
+                <label>Text Size (Typography)</label>
+                <select class="text-normal border-2 w-full h-8 rounded-lg">
+                    <option>Large (text-xl)</option>
+                </select>
+
+                <label>Corner Radius (Borders)</label>
+                <select class="text-normal border-2 w-full h-8 rounded-lg">
+                    <option>Square (rounded-none)</option>
+                </select>
+                <label>Shadow (Depth)</label>
+                <select class="text-normal border-2 w-full h-8 rounded-lg">
+                    <option>Medium (shadow-md)</option>
+                </select>
+            </div>
+        </div>
+        <div flex flex-col gap-2>
+            <div class="border-2 rounded-lg mx-4 mb-4 pb-10 bg-gray-300">
+            <div class="font-bold text-white bg-blue-500 p-8 rounded-lg mt-20 mx-8">
+                <h2>Alex Walker</h2>
+                <p>Full-Stack Web Developer building awesome things with Tailwind CSS.</p>
+            </div>
+            </div>
+            <div class="bg-slate-900 p-4 rounded-lg text-green-400 font-mono text-sm mx-4 ">
+  <div class="flex justify-end">
+    <span class="absolute-top-3 right-4 px-2 py-1 bg-gray-500 text-xs text-slate-300 border border-slate-700 rounded-lg mb-4">HTML Output</span>
+  </div>
+  <pre class="text-left breaks-words whitespace-pre-wrap overflow-x-auto mx-4 p-2">
+<code>&lt;div class="p-4 bg-blue-600 text-white border border-blue-700 font-xl rounded-lg shadow-md"&gt;
+  &lt;h1 class="font-bold mb-2"&gt;Alex Walker&lt;/h1&gt;
+  &lt;p class="opacity-80"&gt;Full-Stack Web Developer building awesome things with Tailwind CSS.&lt;/p&gt;
+&lt;/div&gt;</code>
+  </pre>
+</div>
+        </div>  
+        </div>
+    </div>
+    <div class= "flex flex-row gap-20 ">
+        <div class="hover:scale-105 bg-blue-500 text-white w-20 p-3 rounded-lg mt-5 text-center" button type="Submit">Submit</div>
+        <div class="hidden md:flex ">
+    <a href="#" class="text-blue-700 no-underline pt-8">Readmore</a>
+    </div>
+    <div class="hover:scale-105 bg-blue-500 text-white w-40 p-3 rounded-lg mt-5 text-center" button type="Submit">Hover Me Slowly</div>
+    </div>
+    
+
+</body>
+
+</html>

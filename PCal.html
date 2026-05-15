@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phone Calculator</title>
+
+<style>
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#d9d9d9;
+}
+
+.calculator{
+    width:280px;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+}
+
+#display{
+    width:100%;
+    height:70px;
+    font-size:30px;
+    text-align:right;
+    border:none;
+    outline:none;
+    margin-bottom:20px;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);   
+    gap:10px;
+}
+
+button{
+    height:55px;
+    border:none;
+    border-radius:50%;
+    font-size:22px;
+    cursor:pointer;
+}
+
+.equal{
+    background:rgb(196, 32, 59);
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <input type="text" id="display">
+
+    <div class="buttons">
+        <button>C</button>
+        <button>⌫</button>
+        <button>%</button>
+        <button>/</button>
+
+        <button>7</button>
+        <button>8</button>
+        <button>9</button>
+        <button>*</button>
+
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button>-</button>
+
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button>+</button>
+
+        <button>()</button>
+        <button>0</button>
+        <button>.</button>
+        <button class="equal">=</button>
+    </div>
+</div>
+
+<script>
+
+const display = document.getElementById("display");
+const buttons = document.querySelectorAll("button");
+
+function isOperator(value){
+    return ["+","-","*","/","=","."].includes(value);
+}
+
+function insertValue(value){
+
+
+    if(display.value === "0"){
+        display.value = "";
+    }
+
+    let start = display.selectionStart;
+    let end = display.selectionEnd;
+
+    display.value =
+        display.value.slice(0, start) +value + display.value.slice(end);
+
+    display.focus();
+    display.setSelectionRange(
+        start + value.length,
+        start + value.length
+    );
+}
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+
+        let value = btn.innerText;
+        let last = display.value.slice(-1);
+[5/12/2026 7:46 PM] Yar: if(isOperator(value)){
+    if(display.value === ""  isOperator(last)){
+        return;
+    }
+}
+
+        switch(value){
+
+            case "C":
+                display.value = "0";
+                display.setSelectionRange(1,1);
+                break;
+
+            case "⌫":
+                let start = display.selectionStart;
+                let end = display.selectionEnd;
+
+                if(start === end && start > 0){
+                    display.value =
+                        display.value.slice(0,start-1) +
+                        display.value.slice(end);
+
+                    display.setSelectionRange(start-1,start-1);
+                } else {
+                    display.value =
+                        display.value.slice(0,start) +
+                        display.value.slice(end);
+
+                    display.setSelectionRange(start,start);
+                }
+
+                if(display.value === ""){
+                    display.value = "0";
+                }
+
+                display.focus();
+                break;
+
+            case "%":
+                insertValue("%");
+                break;
+
+            case "%":
+            insertValue("%");
+            break;
+
+            case ".":
+                let parts = display.value.split(/[\+\-\*\/\(\)%]/);
+                let currentNumber = parts[parts.length - 1];
+
+                if(currentNumber.includes(".")){
+                    return;
+                }
+
+                insertValue(".");
+                break;
+
+            
+
+            // case "()":
+                // let last = display.value.slice(-1);
+                case "()":
+                let open = (display.value.match(/\(/g)  []).length;
+                let close = (display.value.match(/\)/g)  []).length;
+
+                if(display.value === ""){
+                    insertValue("(");
+                }
+                else if(open <= close){
+                    insertValue("(");
+                }
+                else{
+                    insertValue(")");
+                }
+                break;
+                // if(
+                //     display.value === "" 
+                //     last === "(" 
+                //     last === "+" 
+                //     last === "-" 
+                //     last === "*" 
+                //     last === "/"
+                // ){
+                //     insertValue("(");
+                // } else {
+                //     insertValue(")");
+                // }
+                // break;
+
+            case "=":
+                try{
+                    let expr = display.value.replace(/%/g, "/100")
+                                            .replace(/\)\(/g, ")*(")
+                                            .replace(/\)(\d)/g, ")*$1")
+                                            .replace(/(\d)\(/g, "$1*(");
+                    let result = eval(expr);
+                    
+
+                    display.value = isFinite(result) ? result : "Error";
+                } catch{
+                    display.value = "Error";
+                }
+                break;
+
+            default:
+                insertValue(value);
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
+[5/12/2026 9:43 PM] Yoon Nadi Lwin: <!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Phone Calculator</title>
+
+<style>
+*{
+    padding:0;
+    margin:0;
+    box-sizing:border-box;
+}
+
+body{
+    height:500px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#d9d9d9;
+}
+
+.calculator{
+    width:280px;
+    background:white;
+    padding:20px;
+    border-radius:20px;
+}
+
+#display{
+    width:100%;
+    height:70px;
+    font-size:30px;
+    text-align:right;
+    border:none;
+    outline:none;
+    margin-bottom:20px;
+}
+
+.buttons{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);   
+    gap:10px;
+}
+button:active{
+            transform: scale(0.95);
+         }
+button{
+    height:55px;
+    border:none;
+    border-radius:50%;
+    font-size:22px;
+    cursor:pointer;
+    background-color: rgb(191, 182, 198);
+}
+
+.equal{
+    background:rgb(196, 32, 59);
+    color:white;
+}
+.pink{
+    color: palevioletred;
+}
+.blue{
+    color: rgb(54, 54, 183);
+}
+.display{
+    color: blue;
+}
+    
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <input type="text" id="display" class="display" value="0">
+
+    <div class="buttons">
+        <button class="pink">C</button>
+        <button class="pink">⌫</button>
+        <button class="blue">%</button>
+        <button class="pink">÷</button>
+
+        <button  class="blue">7</button>
+        <button  class="blue">8</button>
+        <button>9</button>
+        <button class="pink">×</button>
+
+        <button  class="blue">4</button>
+        <button  class="blue">5</button>
+        <button class="blue">6</button>
+        <button class="pink">-</button>
+
+        <button  class="blue">1</button>
+        <button  class="blue">2</button>
+        <button class="blue">3</button>
+        <button class="pink">+</button>
+
+        <button  class="blue">()</button>
+        <button  class="blue">0</button>
+        <button class="blue">.</button>
+        <button class="equal">=</button>
+    </div>
+</div>
+
+<script>
+
+const display = document.getElementById("display");
+const buttons = document.querySelectorAll("button");
+
+function isOperator(value){
+    return ["+","-","×","÷","=",".","%"].includes(value);
+}
+
+function insertValue(value){
+
+
+    if(display.value === "0"){
+        display.value = "";
+    }
+
+    let start = display.selectionStart;
+    let end = display.selectionEnd;
+
+    display.value =
+        display.value.slice(0, start) +value + display.value.slice(end);
+
+    display.focus();
+    display.setSelectionRange(
+        start + value.length,
+        start + value.length
+    );
+}
+buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+[5/12/2026 9:43 PM] Yoon Nadi Lwin: let value = btn.innerText;
+        let last = display.value.slice(-1);
+if(isOperator(value)){
+    if(display.value === ""  isOperator(last))
+    
+    { return;
+      }
+    
+}
+
+        switch(value){
+
+            case "C":
+                display.value = "0";
+                display.setSelectionRange(1,1);
+                break;
+
+            case "⌫":
+                let start = display.selectionStart;
+                let end = display.selectionEnd;
+
+                if(start === end && start > 0){
+                    display.value =
+                        display.value.slice(0,start-1) +
+                        display.value.slice(end);
+
+                    display.setSelectionRange(start-1,start-1);
+                } else {
+                    display.value =
+                        display.value.slice(0,start) +
+                        display.value.slice(end);
+
+                    display.setSelectionRange(start,start);
+                }
+
+                if(display.value === ""){
+                    display.value = "0";
+                }
+
+                display.focus();
+                break;
+
+            case "%":
+                insertValue("%");
+                break;
+
+            case "%":
+            insertValue("%");
+            break;
+
+            case ".":
+                let parts = display.value.split(/[\+\-\*\/\(\)%]/);
+                let currentNumber = parts[parts.length - 1];
+
+                if(currentNumber.includes(".")){
+                    return;
+                }
+
+                insertValue(".");
+                break;
+                case "()":
+                let open = (display.value.match(/\(/g)   []).length;
+                let close = (display.value.match(/\)/g)  || []).length;
+
+                if(display.value === ""){
+                    insertValue("(");
+                }
+                else if(open <= close){
+                    insertValue("(");
+                }
+                else{
+                    insertValue(")");
+                }
+                break;
+
+            case "=":
+                try{
+                  let expr = display.value.replace(/%/g, "/100")
+                                        .replace(/\)\(/g, ")*(")
+                                        .replace(/\)(\d)/g, ")*$1")
+                                        .replace(/(\d)\(/g, "$1*(");
+                   let result = eval(expr);
+                    
+
+                   display.value = isFinite(result) ? result : "Error";
+              } catch{
+                   display.value = "Error";
+               }
+                 break;
+
+         default: insertValue(value);
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
+[5/12/2026 9:48 PM] Yoon Nadi Lwin: const display = document.getElementById("display");
+const buttons = document.querySelectorAll("button");
+
+function isOperator(value){
+    return ["+","-","×","÷"].includes(value);
+}
+
+function insertValue(value){
+
+    if(display.value === "0"){
+        display.value = "";
+    }
+
+    let start = display.selectionStart;
+    let end = display.selectionEnd;
+
+    display.value =
+        display.value.slice(0,start) +
+        value +
+        display.value.slice(end);
+
+    display.focus();
+
+    display.setSelectionRange(
+        start + value.length,
+        start + value.length
+    );
+}
+
+buttons.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        let value = btn.innerText;
+        let last = display.value.slice(-1);
+
+        // operator ထပ်မနှိပ်ရ
+        if(isOperator(value)){
+            if(display.value === "" || isOperator(last)){
+                return;
+            }
+        }
+
+        switch(value){
+
+            case "C":
+
+                display.value = "0";
+                display.setSelectionRange(1,1);
+
+            break;
+
+            case "⌫":
+
+                let start = display.selectionStart;
+                let end = display.selectionEnd;
+
+                if(start === end && start > 0){
+
+                    display.value =
+                        display.value.slice(0,start-1) +
+                        display.value.slice(end);
+
+                    display.setSelectionRange(start-1,start-1);
+
+                }else{
+
+                    display.value =
+                        display.value.slice(0,start) +
+                        display.value.slice(end);
+
+                    display.setSelectionRange(start,start);
+                }
+
+                if(display.value === ""){
+                    display.value = "0";
+                }
+
+                display.focus();
+
+            break;
+
+            case "%":
+
+                insertValue("%");
+
+            break;
+
+            case ".":
+
+                let parts = display.value.split(/[\+\-\×\÷\(\)%]/);
+
+                let currentNumber = parts[parts.length - 1];
+
+                if(currentNumber.includes(".")){
+                    return;
+                }
+
+                insertValue(".");
+
+            break;
+
+            case "()":
+
+                let open =
+                    (display.value.match(/\(/g) || []).length;
+
+                let close =
+                    (display.value.match(/\)/g) || []).length;
+
+                if(display.value === "0"){
+                    display.value = "(";
+                }
+
+                else if(open <= close){
+                    insertValue("(");
+                }
+
+                else{
+                    insertValue(")");
+                }
+
+            break;
+
+            case "=":
+
+                try{
+
+                    // 5%2 ပိတ်
+                    if(/%\d/.test(display.value)){
+                        return;
+                    }
+
+                    let expr = display.value
+                        .replace(/×/g, "*")
+                        .replace(/÷/g, "/")
+                        .replace(/(\d+)%/g, "($1/100)")
+                        .replace(/\)\(/g, ")*(")
+                        .replace(/\)(\d)/g, ")*$1")
+                        .replace(/(\d)\(/g, "$1*(");
+
+                    let result = eval(expr);
+
+                    display.value =
+                        isFinite(result) ? result : "Error";
+
+                }catch{
+
+                    display.value = "Error";
+                }
+
+            break;
+
+            default:
+
+                insertValue(value);
+        }
+    });
+});
